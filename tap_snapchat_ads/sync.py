@@ -289,8 +289,8 @@ def sync_endpoint(
                         end_window + timedelta(hours=1), timezone
                     )
 
-            params[bookmark_query_field_from] = window_start_dt_str
-            params[bookmark_query_field_to] = window_end_dt_str
+            params[bookmark_query_field_from] = f"{window_start_dt_str}%2B02:00"
+            params[bookmark_query_field_to] = f"{window_end_dt_str}%2B02:00"
 
         # This loop will run once for non-country_code endpoints
         #   and one or more times (for each country) for country_code endpoints
