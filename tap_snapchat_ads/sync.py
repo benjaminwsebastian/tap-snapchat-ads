@@ -224,6 +224,7 @@ def sync_endpoint(
         timezone = pytz.timezone("UTC")
     else:
         timezone = pytz.timezone(timezone_desc)
+    LOGGER.info("timezone desc: {}, timezone: {}".format(timezone_desc, timezone))
     LOGGER.info("timezone = {}".format(timezone))
 
     last_datetime = get_bookmark(
@@ -289,12 +290,8 @@ def sync_endpoint(
                         end_window + timedelta(hours=1), timezone
                     )
 
-            params[
-                bookmark_query_field_from
-            ] = f"{window_start_dt_str[:len(window_start_dt_str)-2]}+02:00"
-            params[
-                bookmark_query_field_to
-            ] = f"{window_end_dt_str[:len(window_end_dt_str)-2]}+02:00"
+            params[bookmark_query_field_from] = f"{window_start_dt_str}"
+            params[bookmark_query_field_to] = f"{window_end_dt_str}"
 
         # This loop will run once for non-country_code endpoints
         #   and one or more times (for each country) for country_code endpoints
