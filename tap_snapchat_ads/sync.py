@@ -528,7 +528,7 @@ def sync_endpoint(
                                     endpoint_config=child_endpoint_config,
                                     sync_streams=sync_streams,
                                     selected_streams=selected_streams,
-                                    timezone_desc=timezone_desc,
+                                    timezone_desc="Europe/Stockholm",
                                     parent_id=parent_id,
                                 )
 
